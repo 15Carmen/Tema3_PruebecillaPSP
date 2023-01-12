@@ -34,6 +34,9 @@ public class ClienteTCP {
             is.close();
             os.close();
 
+            //5.- Cerrar la conexion
+            socketCliente.close();
+
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

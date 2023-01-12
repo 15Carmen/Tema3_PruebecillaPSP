@@ -3,18 +3,18 @@ package conexionTCP;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServidorTCP {
     public static void main(String[] args) {
         try {
+
             //1.- Creacion del Socket Servidor
             System.out.println("(Servidor): Abriendo conexion... ");
             ServerSocket socketServidor = new ServerSocket(50000);
 
-            //2.- Esepra y acepta conexiones
+            //2.- Espera y acepta conexiones
             System.out.println("(Servidor): Aceptado conexion...");
             Socket socketCliente = socketServidor.accept();
 
