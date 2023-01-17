@@ -11,7 +11,7 @@ public class ClienteTCP2 {
             //1.- Creacion del socket de tipo cliente
             System.out.println("Estableciendo conexión con el servidor");
 
-            Socket cliente = new Socket("192.168.0.176", 49200);
+            Socket cliente = new Socket("192.168.0.175", 50000);
 
             //2.- Abrir flujos de lectura y escritura
             OutputStream os = cliente.getOutputStream();

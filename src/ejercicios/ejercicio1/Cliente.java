@@ -1,16 +1,19 @@
-package conexionTCP;
+package ejercicios.ejercicio1;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
-public class ClienteTCP {
+public class Cliente {
 
+    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        int num;
+
         try {
             //1.- Creacion del socket de tipo cliente
             System.out.println("(Cliente): Creacion del socket...");
@@ -23,11 +26,19 @@ public class ClienteTCP {
             InputStream is = socketCliente.getInputStream();
 
             //3.- Intercambio de datos con el servidor
-            System.out.println("(Cliente): Envia mensajae al servidor con 14...");
-            os.write(14);
+            OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
+            BufferedWriter bw = new BufferedWriter(osw);
+
+            num = leerNumero();
+            bw.write(num);
+
+            bw.newLine();
+            bw.flush();
 
             System.out.println("(Cliente): Lectura del mensaje del servidor...");
-            System.out.println("Mensaje recibbido por servidor: " + is.read());
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            BufferedReader br = new BufferedReader(isr);
+            System.out.println("Mensaje recibido por el cliente: " + br.readLine());
 
             //4.- Cerrar los flujos de lectura y escritura
             System.out.println("(Cliente): Cerramos el flujo de lectura y escritura...");
@@ -43,5 +54,16 @@ public class ClienteTCP {
             throw new RuntimeException(e);
         }
     }
+
+    private static int leerNumero() {
+        int num;
+        do {
+            System.out.println("Introduzca un numero entero positivo: ");
+            num = sc.nextInt();
+        }while (num<0);
+
+        return num;
+    }
+
 
 }
