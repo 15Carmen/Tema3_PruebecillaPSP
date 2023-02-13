@@ -1,4 +1,4 @@
-package ejercicios.ejercicio2;
+package ejerciciosTCP.ejercicio1;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -6,7 +6,18 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class Cliente2 {
+/**
+ * Crea una aplicación cliente/servidor que se comunique por el puerto 2500 y realice lo siguiente:
+ *
+ * El cliente debe solicitar al usuario un número entero positivo. Hay que comprobar que el número introducido
+ * por el usuario es positivo. Si el usuario introduce un número negativo, el cliente debe seguir pidiéndole
+ * números hasta que introduzca un número positivo.
+ *
+ * Una vez el cliente tenga un número entero positivo se lo envía al servidor. El servidor debe enviar un
+ * mensaje indicando si el número es primo o no.
+ */
+
+public class Cliente {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -67,4 +78,3 @@ public class Cliente2 {
 
 
 }
-
