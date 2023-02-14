@@ -1,18 +1,30 @@
-package ejercicios.ejercicio1;
+package ejerciciosTCP.ejercicio2;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+/**
+ * Crea una aplicación cliente/servidor que se comunique por el puerto 1500 y realice lo siguiente:
+ *
+ * El cliente debe solicitar al usuario un número entero positivo. Hay que comprobar que el número introducido
+ * por el usuario es positivo. Si el usuario introduce un número negativo, el cliente debe seguir pidiéndole
+ * números hasta que introduzca un número positivo.
+ *
+ * Una vez el cliente tenga un número entero positivo se lo envía al servidor. El servidor debe enviar como
+ * mensaje el factorial del número indicado por el cliente.
+ */
+
+public class Servidor2 {
     public static void main(String[] args) {
 
         int numero;
-        String mensaje;
+        int numFactorial;
 
         try {
+
             // 1 - Crear socket de tipo servidor y le indicamos el puerto
-            ServerSocket servidor = new ServerSocket(2500);
+            ServerSocket servidor = new ServerSocket(1500);
 
             // 2 - Queda a la espera de peticiones y las acepta cuando las recibe
             System.out.println("Servidor se encuentra a la escucha...");
@@ -28,14 +40,13 @@ public class Servidor {
             BufferedReader br = new BufferedReader(isr);
 
             numero = br.read();
-            mensaje = esPrimo(numero);
-
+            numFactorial = factorial(numero);
 
             // Enviarle mensaje al cliente
             System.out.println("Servidor envía al cliente un mensaje");
             OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
             BufferedWriter bw = new BufferedWriter(osw);
-            bw.write(mensaje);
+            bw.write(numFactorial);
             bw.newLine();
             bw.flush();
 
@@ -58,20 +69,7 @@ public class Servidor {
         }
     }
 
-    public static String esPrimo(int n){
-        String resultado = "Es primo";
-        boolean enc = false;
-
-        if (n <= 1){
-            resultado = "No es primo";
-        }
-        for (int i = 2; i < n/2 && !enc; i++) {
-            if (n%i==0){
-                resultado = "No es primo";
-                enc = true;
-            }
-        }
-
-        return resultado;
+    public static int factorial(int numero) {
+        return numero * factorial(numero - 1);
     }
 }
