@@ -27,12 +27,12 @@ public class Cliente2 {
 
         try {
             //1.- Creacion del socket de tipo cliente
-            System.out.println("(Cliente): Creacion del socket...");
+            System.out.println("(conexionUDP.Cliente): Creacion del socket...");
             InetAddress direccion= InetAddress.getLocalHost();
             Socket socketCliente = new Socket(direccion, 2500);
 
             //2.- Abrir flujos de lectura y escritura
-            System.out.println("(Cliente): Apertura de flujos de entrada y salida...");
+            System.out.println("(conexionUDP.Cliente): Apertura de flujos de entrada y salida...");
             OutputStream os = socketCliente.getOutputStream();
             InputStream is = socketCliente.getInputStream();
 
@@ -46,13 +46,13 @@ public class Cliente2 {
             bw.newLine();
             bw.flush();
 
-            System.out.println("(Cliente): Lectura del mensaje del servidor...");
+            System.out.println("(conexionUDP.Cliente): Lectura del mensaje del servidor...");
             InputStreamReader isr = new InputStreamReader(is, "UTF-8");
             BufferedReader br = new BufferedReader(isr);
             System.out.println("Mensaje recibido por el cliente: " + br.readLine());
 
             //4.- Cerrar los flujos de lectura y escritura
-            System.out.println("(Cliente): Cerramos el flujo de lectura y escritura...");
+            System.out.println("(conexionUDP.Cliente): Cerramos el flujo de lectura y escritura...");
             is.close();
             os.close();
 

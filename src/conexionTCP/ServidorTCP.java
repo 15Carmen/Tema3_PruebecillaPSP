@@ -10,24 +10,24 @@ public class ServidorTCP {
     public static void main(String[] args) {
         try {
 
-            //1.- Creacion del Socket Servidor
-            System.out.println("(Servidor): Abriendo conexion... ");
+            //1.- Creacion del Socket conexionUDP.Servidor
+            System.out.println("(conexionUDP.Servidor): Abriendo conexion... ");
             ServerSocket socketServidor = new ServerSocket(50000);
 
             //2.- Espera y acepta conexiones
-            System.out.println("(Servidor): Aceptado conexion...");
+            System.out.println("(conexionUDP.Servidor): Aceptado conexion...");
             Socket socketCliente = socketServidor.accept();
 
             //3.- Flujos de entrada y salida
-            System.out.println("(Servidor): Abriendo flujos de entrada y salida...");
+            System.out.println("(conexionUDP.Servidor): Abriendo flujos de entrada y salida...");
             InputStream is = socketCliente.getInputStream();
             OutputStream os = socketCliente.getOutputStream();
 
             //4.- Intercambiar datos con el cliente
-            System.out.println("(Servidor): Leo mensaje del cliente...");
+            System.out.println("(conexionUDP.Servidor): Leo mensaje del cliente...");
             System.out.println("Mensaje del cliente: " + is.read());
 
-            System.out.println("(Servidor): Envio mensaje al cliente con 7...");
+            System.out.println("(conexionUDP.Servidor): Envio mensaje al cliente con 7...");
             os.write(7);
 
             //5.- Cerrar flujos de lectura y escritura

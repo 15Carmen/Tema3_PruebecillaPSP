@@ -11,7 +11,7 @@ public class ServidorTCP2 {
             ServerSocket servidor = new ServerSocket(50000);
 
             // 2 - Queda a la espera de peticiones y las acepta cuando las recibe
-            System.out.println("Servidor se encuentra a la escucha...");
+            System.out.println("conexionUDP.Servidor se encuentra a la escucha...");
             Socket peticion = servidor.accept();
 
             // 3 - Abrir flujos de lectura y escritura de datos
@@ -25,7 +25,7 @@ public class ServidorTCP2 {
             System.out.println("Mensaje enviado por el cliente: " + br.readLine());
 
             // Enviarle mensaje al cliente
-            System.out.println("Servidor envía al cliente un mensaje");
+            System.out.println("conexionUDP.Servidor envía al cliente un mensaje");
             OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
             BufferedWriter bw = new BufferedWriter(osw);
             bw.write("Soy el servidor. Este mensaje es para el cliente");
@@ -46,7 +46,7 @@ public class ServidorTCP2 {
             servidor.close();
 
         } catch (IOException e) {
-            System.err.println("Ha habido algún error en la creación del Socket Servidor");
+            System.err.println("Ha habido algún error en la creación del Socket conexionUDP.Servidor");
             e.printStackTrace();
         }
     }
